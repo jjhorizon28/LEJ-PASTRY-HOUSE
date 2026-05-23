@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEJ PASTRY HOUSE</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    text-decoration:none;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins', Calibri, sans-serif;
+    background:#fffaf5;
+    color:#333;
+}
+
+/* NAVBAR */
+.navbar{
+    background:linear-gradient(90deg, #8b4513, brown);
+    padding:18px 30px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 3px 10px rgba(0,0,0,0.2);
+}
+
+.navdiv{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo a{
+    font-size:30px;
+    font-weight:700;
+    color:white;
+    font-family:Lucida Handwriting;
+    letter-spacing:1px;
+}
+
+li{
+    list-style:none;
+    display:inline-block;
+}
+
+li a{
+    color:white;
+    font-size:17px;
+    font-weight:600;
+    margin-right:20px;
+    transition:0.3s;
+    position:relative;
+}
+
+li a:hover{
+    color:#ffd7a0;
+}
+
+/* HERO */
+.hero{
+    height:92vh;
+    background:url('https://img.freepik.com/premium-photo/rustic-bread-bakery-wood-background_776894-102177.jpg?semt=ais_hybrid&w=740&q=80') no-repeat center center/cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    position:relative;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.55);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    animation:fadeIn 1.5s ease;
+}
+
+.hero-content h1{
+    font-size:60px;
+    margin-bottom:15px;
+    letter-spacing:1px;
+}
+
+.hero-content p{
+    font-size:22px;
+    margin-bottom:25px;
+    opacity:0.9;
+}
+
+.hero-content a{
+    background:#ffcc70;
+    color:#333;
+    padding:12px 28px;
+    border-radius:30px;
+    font-size:18px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.hero-content a:hover{
+    background:white;
+    transform:scale(1.05);
+}
+
+/* SCHEDULE SECTION */
+.schedule-section{
+    margin-top:80px;
+    text-align:center;
+}
+
+.schedule-section h2{
+    font-size:42px;
+    color:brown;
+    margin-bottom:45px;
+}
+
+/* CONTAINER */
+.schedule-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+/* CARD */
+.schedule-card{
+    background:white;
+    padding:35px 25px;
+    border-radius:24px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:0.3s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+/* TOP BAR */
+.schedule-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:8px;
+    background:linear-gradient(90deg,#8b4513,#d9a066);
+}
+
+/* HOVER */
+.schedule-card:hover{
+    transform:translateY(-10px) scale(1.02);
+}
+
+/* ICON */
+.icon{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+/* TITLE */
+.schedule-card h3{
+    color:#8b4513;
+    font-size:24px;
+    margin-bottom:12px;
+}
+
+/* TIME */
+.schedule-card p{
+    color:#b5651d;
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+/* SMALL TEXT */
+.schedule-card span{
+    color:#666;
+    font-size:14px;
+    line-height:1.5;
+}
+
+/* SUNDAY STYLE */
+.sunday{
+    background:linear-gradient(135deg,#fff7ef,#ffe2bf);
+}
+
+
+/* ABOUT */
+.about{
+    padding:80px 40px;
+    background:#fff;
+}
+
+.about-container{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:60px;
+    flex-wrap:wrap;
+}
+
+.about-image img{
+    width:420px;
+    border-radius:100px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.about-text{
+    max-width:520px;
+}
+
+.about-text h2{
+    font-size:42px;
+    color:brown;
+    margin-bottom:15px;
+}
+
+.about-text p{
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:15px;
+}
+
+.about-text a{
+    display:inline-block;
+    margin-top:10px;
+    background:brown;
+    color:white;
+    padding:12px 25px;
+    border-radius:25px;
+    transition:0.3s;
+}
+
+.about-text a:hover{
+    background:#5a2d0c;
+}
+
+/* PRODUCTS LIST */
+section ul{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    padding:20px;
+    font-weight:bold;
+}
+
+/* MENU */
+.menu{
+    padding:80px 40px;
+    text-align:center;
+    background:#fff4e6;
+}
+
+.menu h2{
+    font-size:42px;
+    color:brown;
+    margin-bottom:40px;
+}
+
+.menu-container{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.menu-box{
+    background:white;
+    width:280px;
+    padding:20px;
+    border-radius:18px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    transition:0.3s;
+    color:black;
+}
+
+.menu-box:hover{
+    transform:translateY(-10px);
+}
+
+.menu-box img{
+    width:100%;
+    height:190px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+.menu-box h3{
+    margin:15px 0 10px;
+    color:brown;
+}
+
+.menu-box span{
+    font-weight:bold;
+    color:#444;
+}
+
+/* FEATURES */
+.features{
+    padding:80px 40px;
+    text-align:center;
+    background:#fff;
+}
+
+.features h2{
+    font-size:42px;
+    color:brown;
+    margin-bottom:40px;
+}
+
+.feature-container{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.feature-box{
+    background:#fff4e6;
+    width:300px;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.feature-box:hover{
+    transform:translateY(-10px) scale(1.03);
+}
+
+.feature-box h3{
+    color:brown;
+    margin-bottom:15px;
+}
+
+/* TESTIMONIALS */
+.testimonials{
+    padding:80px 40px;
+    background:#fff;
+    text-align:center;
+}
+
+.testimonials h2{
+    font-size:42px;
+    color:brown;
+    margin-bottom:40px;
+}
+
+.testimonial-container{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.testimonial-box{
+    background:#fff4e6;
+    width:300px;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.testimonial-box:hover{
+    transform:scale(1.05);
+}
+
+.testimonial-box p{
+    font-style:italic;
+    margin-bottom:15px;
+    line-height:1.6;
+}
+
+.testimonial-box h4{
+    color:brown;
+}
+
+/* CUTE BUTTON EFFECT */
+.hero-content a,
+.about-text a{
+    box-shadow:0 5px 15px rgba(255,204,112,0.5);
+}
+
+/* FLOATING IMAGE */
+.about-image img{
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+    100%{transform:translateY(0);}
+}
+
+
+
+/* FOOTER */
+footer{
+    background:linear-gradient(90deg, brown, #8b4513);
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:50px;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="navdiv">
+        <div class="logo"><a href="file:///C:/Users/Jhonell/OneDrive/Desktop/Web%20Development/Home.html">🥐 LEJ PASTRY HOUSE</a></div>
+        <ul>
+            <li><a href="file:///C:/Users/Jhonell/OneDrive/Desktop/Web%20Development/Home.html">Home</a></li>
+            <li><a href="file:///C:/Users/Jhonell/OneDrive/Desktop/Web%20Development/About%20Lej.html">About</a></li>
+            <li><a href="file:///C:/Users/Jhonell/OneDrive/Desktop/Web%20Development/Our%20Products.html">Our Products</a></li>
+            <li><a href="file:///C:/Users/Jhonell/OneDrive/Desktop/Web%20Development/Contact%20Us.html">Contact Us</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Freshly Baked Everyday</h1>
+        <p>Baked with HEART, Shared with LOVE.</p>
+        <a href="file:///C:/Users/Jhonell/OneDrive/Desktop/Web%20Development/Our%20Products.html">Order Now</a>
+    </div>
+</section>
+
+     <!-- BAKERY SCHEDULE -->
+<div class="schedule-section">
+
+    <h2>Bakery Schedule 🥐</h2>
+
+    <div class="schedule-container">
+
+        <div class="schedule-card">
+            <div class="icon">🌞</div>
+            <h3>Monday - Friday</h3>
+            <p>7:00 AM - 8:00 PM</p>
+            <span>Fresh breads baked every morning</span>
+        </div>
+
+        <div class="schedule-card">
+            <div class="icon">☕</div>
+            <h3>Saturday</h3>
+            <p>8:00 AM - 9:00 PM</p>
+            <span>Perfect day for pastries & coffee</span>
+        </div>
+
+        <div class="schedule-card sunday">
+            <div class="icon">💛</div>
+            <h3>Sunday</h3>
+            <p>9:00 AM - 6:00 PM</p>
+            <span>Family dessert and chill day</span>
+        </div>
+
+    </div>
+
+</div>
+<!-- FEATURES SECTION -->
+<section class="features">
+
+    <h2>Why Customers Love Us 💕</h2>
+
+    <div class="feature-container">
+
+        <div class="feature-box">
+            <h3>🥐 Fresh Everyday</h3>
+            <p>All breads and pastries are baked fresh daily with premium ingredients.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>🎂 Custom Cakes</h3>
+            <p>Beautiful cakes made for birthdays, weddings, and special events.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>☕ Cozy Experience</h3>
+            <p>Enjoy warm pastries and a relaxing bakery atmosphere.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<main>
+<!-- About Section -->
+
+<section class="about">
+    <div class="about-container">
+
+        <div class="about-image">
+            <img src="bruhda.png">
+        </div>
+
+        <div class="about-text">
+            <h2>About LEJ Pastry House</h2>
+            <p>
+                Welcome to LEJ Pastry House, where every bread, cake, and pastry
+                is baked fresh with love and passion. We are dedicated to bringing
+                delicious treats and quality service to every customer.
+            </p>
+
+            <p>
+                From soft breads to custom cakes for special occasions, our goal
+                is to make every bite memorable.
+            </p>
+
+            <a href="file:///C:/Users/Jhonell/OneDrive/Desktop/Web%20Development/About%20Lej.html">Read More</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- MENU SECTION -->
+
+
+<section class="menu" id="menu">
+    <h2>Our Menu</h2>
+
+    <div class="menu-container">
+
+        <a href="https://images.unsplash.com/photo-1549931319-a545dcf3bc73" class="menu-box">
+            <img src="BREAD.jpg">
+            <h3>Breads</h3>
+            <p>Soft and freshly baked breads daily.</p>
+            <span>₱50 - ₱150</span>
+        </a>
+
+        <a href="https://images.unsplash.com/photo-1578985545062-69928b1d9587" class="menu-box">
+            <img src="CAKE.jpg">
+            <h3>Cakes</h3>
+            <p>Perfect cakes for birthdays and events.</p>
+            <span>₱500 - ₱1500</span>
+        </a>
+
+        <a href="https://www.kingarthurbaking.com/sites/default/files/2025-06/Easy-Cheesecake-6.jpg" class="menu-box">
+            <img src="PASTRY.jpg">
+            <h3>CheeseCake</h3>
+            <p>Sweet pastries and treats for everyone.</p>
+            <span>₱120</span>
+        </a>
+
+    </div>
+</section>
+
+  <div class="testimonial-container">
+
+        <div class="testimonial-box">
+            <p>"The softest bread I've ever tasted!"</p>
+            <h4>- Maria S.</h4>
+        </div>
+
+        <div class="testimonial-box">
+            <p>"Their cakes are beautiful and delicious."</p>
+            <h4>- John D.</h4>
+        </div>
+
+        <div class="testimonial-box">
+            <p>"Perfect place for pastry lovers."</p>
+            <h4>- Angela T.</h4>
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+    <p>&copy; 2026 LEJ PASTRY HOUSE. All rights reserved.</p>
+</footer>
+</main>
+
+</body>
+</html>
