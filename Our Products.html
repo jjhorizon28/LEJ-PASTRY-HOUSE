@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Products - LEJ Pastry House</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', Calibri, sans-serif;
+}
+
+/* BACKGROUND */
+body{
+    background:#fffaf5;
+}
+
+/* NAVBAR (same style as homepage) */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    text-decoration:none;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins', Calibri, sans-serif;
+    background:#fffaf5;
+    color:#333;
+}
+
+/* NAVBAR */
+.navbar{
+    background:linear-gradient(90deg, brown, #8b4513);
+    padding:18px 30px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 3px 10px rgba(0,0,0,0.2);
+}
+
+.navdiv{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo a{
+    font-size:30px;
+    font-weight:700;
+    color:white;
+    font-family:Lucida Handwriting;
+}
+
+li{
+    list-style:none;
+    display:inline-block;
+}
+
+li a{
+    color:white;
+    font-size:17px;
+    font-weight:600;
+    margin-right:20px;
+    transition:0.3s;
+}
+
+li a:hover{
+    color:#ffd7a0;
+}
+/* TITLE */
+h2{
+    text-align:center;
+    font-size:42px;
+    color:brown;
+    margin:50px 0;
+}
+
+/* PRODUCTS GRID */
+.product-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));
+    gap:25px;
+    padding:20px 60px;
+}
+
+/* PRODUCT CARD */
+.product-box{
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:0.3s;
+    padding-bottom:15px;
+}
+
+.product-box:hover{
+    transform:translateY(-8px);
+}
+
+.product-box img{
+    width:100%;
+    height:170px;
+    object-fit:cover;
+}
+
+.product-box h3{
+    margin:10px 15px 5px;
+    color:brown;
+}
+
+.product-box p{
+    font-size:14px;
+    color:#666;
+    margin:0 15px;
+}
+
+.product-box span{
+    display:block;
+    margin:10px 15px;
+    font-weight:600;
+    color:#8b4513;
+    font-size:18px;
+}
+.price{
+    display:block;
+    margin:10px 15px;
+    font-weight:600;
+    color:#8b4513;
+    font-size:18px;
+}
+
+.price::before{
+    content:"₱";
+    font-size:14px;
+    margin-right:2px;
+    opacity:0.7;
+}
+
+/* INPUT + BUTTON */
+.product-box input{
+    width:60px;
+    margin:10px 15px;
+    padding:5px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    text-align:center;
+}
+
+.product-box button{
+    margin:0 15px;
+    width:calc(100% - 30px);
+    padding:10px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#8b4513,#b5651d);
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:bold;
+}
+
+.product-box button:hover{
+    transform:scale(1.03);
+}
+
+/* CART BUTTON */
+.cart-btn{
+    position:fixed;
+    right:25px;
+    top:90px;
+    background:linear-gradient(135deg,#8b4513,#c97b36);
+    color:white;
+    padding:14px 20px;
+    border-radius:50px;
+    cursor:pointer;
+    font-weight:600;
+    font-size:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    transition:0.3s ease;
+    z-index:2000;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    border:2px solid rgba(255,255,255,0.2);
+    backdrop-filter:blur(10px);
+}
+
+.cart-btn:hover{
+    transform:translateY(-3px) scale(1.03);
+    box-shadow:0 14px 30px rgba(0,0,0,0.2);
+}
+
+/* CART BOX */
+.cart-box{
+    display:none;
+    position:fixed;
+    right:25px;
+    top:150px;
+    width:340px;
+    max-height:500px;
+    overflow-y:auto;
+    background:white;
+    border-radius:25px;
+    padding:22px;
+    box-shadow:0 20px 45px rgba(0,0,0,0.15);
+    z-index:2000;
+    border:1px solid #f0dfd0;
+    animation:fadeIn 0.3s ease;
+}
+
+/* SCROLLBAR */
+.cart-box::-webkit-scrollbar{
+    width:6px;
+}
+
+.cart-box::-webkit-scrollbar-thumb{
+    background:#d9a066;
+    border-radius:20px;
+}
+
+/* TITLE */
+.cart-box h3{
+    color:#8b4513;
+    font-size:24px;
+    margin-bottom:18px;
+    border-bottom:2px solid #f3e2d2;
+    padding-bottom:10px;
+}
+
+/* CART LIST */
+.cart-box ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+/* CART ITEM */
+.cart-box li{
+    background:#fff7ef;
+    border-radius:16px;
+    padding:12px;
+    margin-bottom:12px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    font-size:14px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.05);
+    transition:0.2s;
+}
+
+.cart-box li:hover{
+    transform:translateX(3px);
+}
+
+/* REMOVE BUTTON */
+.cart-box li button{
+    background:#ff6b6b;
+    color:white;
+    border:none;
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:12px;
+    transition:0.2s;
+}
+
+.cart-box li button:hover{
+    background:#e63946;
+    transform:scale(1.1);
+}
+
+/* TOTAL */
+.cart-box h4{
+    margin-top:20px;
+    font-size:22px;
+    color:#8b4513;
+    text-align:right;
+    border-top:2px solid #f3e2d2;
+    padding-top:15px;
+}
+
+/* CHECKOUT BUTTON */
+.cart-box > button{
+    width:100%;
+    margin-top:18px;
+    padding:14px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(135deg,#8b4513,#c97b36);
+    color:white;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.cart-box > button:hover{
+    transform:scale(1.03);
+    box-shadow:0 8px 18px rgba(0,0,0,0.15);
+}
+/* ORDER FORM */
+.order-form{
+    padding:60px 20px;
+    background:#fff4e6;
+    text-align:center;
+    margin-top:50px;
+}
+
+.order-form form{
+    max-width:450px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+.order-form input,
+.order-form textarea{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border-radius:10px;
+    border:1px solid #ccc;
+}
+
+.order-form textarea{
+    height:120px;
+    resize:none;
+}
+
+.order-form button{
+    width:100%;
+    padding:12px;
+    background:#8b4513;
+    color:white;
+    border:none;
+    border-radius:12px;
+}
+
+.floating-msg{
+    position:fixed;
+    background:#8b4513;
+    color:white;
+    padding:8px 14px;
+    border-radius:20px;
+    font-size:13px;
+    pointer-events:none;
+    opacity:0;
+    transform:translateY(0);
+    transition:all 0.5s ease;
+    z-index:2000;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+.floating-msg.show{
+    opacity:1;
+    transform:translateY(-40px);
+}
+/* MODAL BACKDROP */
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    justify-content:center;
+    align-items:center;
+    z-index:3000;
+}
+
+/* MODAL BOX */
+.modal-content{
+    background:white;
+    padding:30px;
+    border-radius:18px;
+    width:90%;
+    max-width:450px;
+    position:relative;
+    animation:fadeIn 0.3s ease;
+}
+
+/* CLOSE BUTTON */
+.close{
+    position:absolute;
+    top:10px;
+    right:15px;
+    font-size:22px;
+    cursor:pointer;
+    color:#8b4513;
+}
+/* ORDER MODAL BACKDROP */
+.order-modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(139,69,19,0.4); /* brown tint */
+    justify-content:center;
+    align-items:center;
+    z-index:3000;
+}
+
+/* ORDER BOX */
+.order-box{
+    background:#fffaf5;
+    width:90%;
+    max-width:450px;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+    border:2px solid #8b4513;
+    position:relative;
+    animation:fadeIn 0.3s ease;
+}
+
+/* TITLE */
+.order-box h2{
+    color:#8b4513;
+    margin-bottom:15px;
+}
+
+/* INPUTS */
+.order-box input,
+.order-box textarea{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border-radius:12px;
+    border:1px solid #d9a066;
+    outline:none;
+    background:#fff;
+    font-family:inherit;
+}
+
+/* TEXTAREA */
+.order-box textarea{
+    height:120px;
+    resize:none;
+}
+
+/* BUTTON */
+.order-box button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#8b4513,#b5651d);
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.order-box button:hover{
+    transform:scale(1.03);
+}
+
+/* CLOSE BUTTON */
+.close-btn{
+    position:absolute;
+    top:10px;
+    right:15px;
+    font-size:24px;
+    color:#8b4513;
+    cursor:pointer;
+}
+
+
+/* FOOTER */
+footer{
+    background:linear-gradient(90deg, brown, #8b4513);
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:50px;
+}
+
+/* CUSTOMER REVIEWS */
+.customer-reviews{
+    padding:80px 40px;
+    background:#fff4e6;
+    text-align:center;
+}
+
+.customer-reviews h2{
+    color:brown;
+    margin-bottom:40px;
+}
+
+.review-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.review-card{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    transition:0.3s;
+    text-align:left;
+}
+
+.review-card:hover{
+    transform:translateY(-8px);
+}
+
+.review-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+}
+
+.review-top h3{
+    color:#8b4513;
+    font-size:18px;
+}
+
+.review-top span{
+    color:#ffb84d;
+    font-size:18px;
+}
+
+.review-card p{
+    color:#555;
+    line-height:1.7;
+    font-size:15px;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav class="navbar">
+    <div class="navdiv">
+        <div class="logo"><a href="file:///C:/Users/Jhonell/OneDrive/Desktop/Web%20Development/Home.html">🥐 LEJ Pastry House</a></div>
+        <ul>
+            <li><a href="file:///C:/Users/Jhonell/OneDrive/Desktop/Web%20Development/Home.html">Home</a></li>
+            <li><a href="file:///C:/Users/Jhonell/OneDrive/Desktop/Web%20Development/About%20Lej.html">About</a></li>
+            <li><a href="file:///C:/Users/Jhonell/OneDrive/Desktop/Web%20Development/Our%20Products.html"> Our Products</a></li>
+            <li><a href="file:///C:/Users/Jhonell/OneDrive/Desktop/Web%20Development/Contact%20Us.html">Contact Us</a></li>
+        </ul>
+    </div>
+</nav>
+
+<h2>Our Products</h2>
+
+<!-- CUSTOMER REVIEWS -->
+<section class="customer-reviews">
+
+    <h2>Customer Reviews 💬</h2>
+
+    <div class="review-container">
+
+        <div class="review-card">
+            <div class="review-top">
+                <h3>Maria S.</h3>
+                <span>★★★★★</span>
+            </div>
+
+            <p>
+                “The bread is super soft and fresh! 
+                Definitely my favorite bakery in town.”
+            </p>
+        </div>
+
+        <div class="review-card">
+            <div class="review-top">
+                <h3>John D.</h3>
+                <span>★★★★★</span>
+            </div>
+
+            <p>
+                “Their cheesecake tastes amazing. 
+                Perfect sweetness and creamy texture!”
+            </p>
+        </div>
+
+        <div class="review-card">
+            <div class="review-top">
+                <h3>Angela T.</h3>
+                <span>★★★★☆</span>
+            </div>
+
+            <p>
+                “Love the pastries and croissants. 
+                Very aesthetic place and friendly staff.”
+            </p>
+        </div>
+
+        <div class="review-card">
+            <div class="review-top">
+                <h3>Kevin R.</h3>
+                <span>★★★★★</span>
+            </div>
+
+            <p>
+                “The brownies are insanely good. 
+                Sarap e potek omay lodi.”
+            </p>
+        </div>
+
+        <div class="review-card">
+            <div class="review-top">
+                <h3>Sophia M.</h3>
+                <span>★★★★★</span>
+            </div>
+
+            <p>
+                “Affordable prices with premium quality. 
+                Highly recommended!”
+            </p>
+        </div>
+
+        <div class="review-card">
+            <div class="review-top">
+                <h3>Daniel C.</h3>
+                <span>★★★★☆</span>
+            </div>
+
+            <p>
+                “Ensaymada was buttery and delicious. 
+                Perfect with coffee.”
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CART -->
+<div class="cart-btn" onclick="toggleCart()">
+🛒 Cart (<span id="cart-count">0</span>)
+</div>
+
+<div class="cart-box" id="cartBox">
+    <h3>Your Cart</h3>
+    <ul id="cart-items"></ul>
+    <h4>Total: ₱<span id="cart-total">0</span></h4>
+    <button onclick="checkout()">Checkout</button>
+</div>
+
+<!-- PRODUCTS (10 ITEMS) -->
+<div class="product-container">
+    <div class="product-box">
+        <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73">
+        <h3>Bread</h3>
+        <p>Soft freshly baked bread</p>
+        <span class="price">50</span>
+        <input type="number" value="1" min="1" id="bread">
+       <button onclick="addToCart('Bread',50,'bread', this)">Add to Cart
+       </button> 
+    </div>
+
+    <div class="product-box">
+        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587">
+        <h3>Cake</h3>
+        <p>Perfect celebration cake</p>
+        <span class="price">800</span>
+        <input type="number" value="1" min="1" id="cake">
+        <button onclick="addToCart('Cake',800,'cake', this)">Add to Cart
+        </button>
+    </div>
+
+    <div class="product-box">
+        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b">
+        <h3>Donut</h3>
+        <p>Sweet fluffy donuts</p>
+        <span class="price">35</span>
+        <input type="number" value="1" min="1" id="donut">
+        <button onclick="addToCart('Donut',35,'donut', this)">Add to Cart
+        </button>
+    </div>
+
+    <div class="product-box">
+        <img src="https://images.unsplash.com/photo-1681218079567-35aef7c8e7e4?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnV0dGVyJTIwY3JvaXNzYW50fGVufDB8fDB8fHww">
+        <h3>Croissant</h3>
+        <p>Buttery croissant</p>
+        <span class="price">60</span>
+        <input type="number" value="1" min="1" id="croissant">
+         <button onclick="addToCart('Croissant',60,'croissant', this)">Add to Cart
+         </button>
+    </div>
+
+    <div class="product-box">
+        <img src="https://www.littlesugarsnaps.com/wp-content/uploads/2023/05/cherry-cupcake-no-wrapper.jpg">
+        <h3>Cupcake</h3>
+        <p>Mini cupcakes with frosting</p>
+        <span class="price">45</span>
+        <input type="number" value="1" min="1" id="cupcake">
+        <button onclick="addToCart('Cupcake',45,'cupcake', this)">Add to Cart
+        </button>
+    </div>
+
+    <div class="product-box">
+        <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35">
+        <h3>Cookies</h3>
+        <p>Crunchy chocolate cookies</p>
+        <span class="price">30</span>
+        <input type="number" value="1" min="1" id="cookies">
+        <button onclick="addToCart('Cookies',30,'cookies', this)">Add to Cart
+        </button>
+    </div>
+
+    <div class="product-box">
+        <img src="https://www.kumori.com.ph/cdn/shop/files/Ensaymada.jpg?v=1764825538">
+        <h3>Ensaymada</h3>
+        <p>Filipino buttery classic</p>
+        <span class="price">55</span>
+        <input type="number" value="1" min="1" id="ensaymada">
+         <button onclick="addToCart('Ensaymada',55,'ensaymada', this)">Add to Cart
+         </button>
+    </div>
+
+    <div class="product-box">
+        <img src="https://thefirstyearblog.com/wp-content/uploads/2026/01/Healthy-Blueberry-Muffins-Square-2026.png">
+        <h3>Muffin</h3>
+        <p>Soft baked muffins</p>
+        <span class="price">40</span>
+        <input type="number" value="1" min="1" id="muffin">
+         <button onclick="addToCart('Muffin',40,'muffin', this)">Add to Cart
+         </button>
+    </div>
+
+    <div class="product-box">
+        <img src="https://i0.wp.com/cookingwithbry.com/wp-content/uploads/chocolate-brownies-recipe.png?resize=720%2C720&ssl=1">
+        <h3>Brownie</h3>
+        <p>Fudgy chocolate brownie</p>
+        <span class="price">60</span>
+        <input type="number" value="1" min="1" id="brownie">
+       <button onclick="addToCart('Brownie',60,'brownie', this)">Add to Cart
+       </button>
+    </div>
+
+    <div class="product-box">
+        <img src="https://www.kingarthurbaking.com/sites/default/files/2025-06/Easy-Cheesecake-6.jpg">
+        <h3>Cheesecake</h3>
+        <p>Creamy classic cheesecake</p>
+        <span class="price">120</span>
+        <input type="number" value="1" min="1" id="cheesecake">
+      <button onclick="addToCart('Cheesecake',120,'cheesecake', this)">Add to Cart
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ORDER MODAL -->
+<div id="orderModal" class="order-modal">
+    <div class="order-box">
+
+        <span class="close-btn" onclick="closeOrderModal()">&times;</span>
+
+        <h2>Place Order</h2>
+
+        <form>
+            <input type="text" placeholder="Full Name" required>
+            <input type="tel" placeholder="Phone Number" required>
+
+            <textarea id="orderDetails" readonly></textarea>
+
+            <button type="submit">Submit Order</button>
+        </form>
+
+    </div>
+</div>
+
+<footer>
+© 2026 LEJ PASTRY HOUSE
+</footer>
+
+<script>
+let cart = [];
+let total = 0;
+
+function addToCart(product, price, qtyId, btn){
+    let qty = parseInt(document.getElementById(qtyId).value);
+
+    if(isNaN(qty) || qty <= 0){
+        alert("Please enter a valid quantity");
+        return;
+    }
+
+    cart.push({product, price, qty});
+    total += price * qty;
+
+    updateCart();
+
+    // 🔥 SHOW FLOATING EFFECT
+    let rect = btn.getBoundingClientRect();
+    showFloatingMessage(rect.left, rect.top);
+}
+function updateCart(){
+    let cartItems = document.getElementById("cart-items");
+    let cartCount = document.getElementById("cart-count");
+    let cartTotal = document.getElementById("cart-total");
+
+    cartItems.innerHTML = "";
+
+    cart.forEach((item, index)=>{
+        cartItems.innerHTML += `
+            <li>
+                ${item.product} x${item.qty} - ₱${item.price * item.qty}
+                <button onclick="removeItem(${index})">❌</button>
+            </li>
+        `;
+    });
+
+    cartCount.innerText = cart.length;
+    cartTotal.innerText = total;
+}
+
+function removeItem(index){
+    total -= cart[index].price * cart[index].qty;
+    cart.splice(index,1);
+    updateCart();
+}
+
+function toggleCart(){
+    let box = document.getElementById("cartBox");
+    box.style.display = (box.style.display === "block") ? "none" : "block";
+}
+
+/* CHECKOUT */
+function checkout(){
+
+    if(cart.length === 0){
+        alert("Your cart is empty!");
+        return;
+    }
+
+    let orderText = "🛒 ORDER SUMMARY\n\n";
+
+    cart.forEach(item=>{
+        orderText += `${item.product} x${item.qty} = ₱${item.price * item.qty}\n`;
+    });
+
+    orderText += `\nTOTAL: ₱${total}`;
+
+    document.getElementById("orderDetails").value = orderText;
+
+    document.getElementById("cartBox").style.display = "none";
+
+    // OPEN MODAL
+    document.getElementById("orderModal").style.display = "flex";
+}
+function closeOrderModal(){
+    document.getElementById("orderModal").style.display = "none";
+}
+function showFloatingMessage(x, y){
+    let msg = document.createElement("div");
+    msg.className = "floating-msg";
+    msg.innerText = "✔ Added to Cart";
+
+    document.body.appendChild(msg);
+
+    msg.style.left = x + "px";
+    msg.style.top = y + "px";
+
+    // trigger animation
+    setTimeout(()=>{
+        msg.classList.add("show");
+    },10);
+
+    // remove after animation
+    setTimeout(()=>{
+        msg.remove();
+    },800);
+}
+window.onclick = function(event){
+    let modal = document.getElementById("orderModal");
+    if(event.target == modal){
+        modal.style.display = "none";
+    }
+}
+
+/* FORM SUBMIT */
+document.querySelector("#orderModal form").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    if(cart.length === 0){
+        alert("Cart is empty!");
+        return;
+    }
+
+    alert("🎉 Order placed successfully!");
+
+    cart = [];
+    total = 0;
+    updateCart();
+
+    document.getElementById("orderDetails").value = "";
+    this.reset();
+});
+
+
+</script>
+
+</body>
+</html>

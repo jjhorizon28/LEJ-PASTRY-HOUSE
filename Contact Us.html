@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us - LEJ Pastry House</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    text-decoration:none;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins', Calibri, sans-serif;
+    background:#fffaf5;
+    color:#333;
+}
+
+/* NAVBAR */
+.navbar{
+    background:linear-gradient(90deg, brown, #8b4513);
+    padding:18px 30px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 3px 10px rgba(0,0,0,0.2);
+}
+
+.navdiv{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo a{
+    font-size:30px;
+    font-weight:700;
+    color:white;
+    font-family:Lucida Handwriting;
+}
+
+li{
+    list-style:none;
+    display:inline-block;
+}
+
+li a{
+    color:white;
+    font-size:17px;
+    font-weight:600;
+    margin-right:20px;
+    transition:0.3s;
+}
+
+li a:hover{
+    color:#ffd7a0;
+}
+
+/* CONTACT SECTION */
+.contact-page{
+    padding:90px 20px;
+    text-align:center;
+}
+
+.contact-box{
+    background:white;
+    max-width:700px;
+    margin:auto;
+    padding:50px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    transition:0.3s;
+    animation:fadeIn 1.2s ease;
+}
+
+.contact-box:hover{
+    transform:translateY(-5px);
+}
+
+.contact-box h2{
+    font-size:42px;
+    color:brown;
+    margin-bottom:25px;
+}
+
+.contact-box p{
+    font-size:20px;
+    margin:15px 0;
+    color:#444;
+    display:flex;
+    justify-content:center;
+    gap:10px;
+}
+
+/* CUSTOMER SERVICE */
+.service-section{
+    margin-top:40px;
+    text-align:left;
+}
+
+.service-section h3{
+    color:brown;
+    margin-bottom:15px;
+    font-size:28px;
+    text-align:center;
+}
+
+.service-section p{
+    font-size:16px;
+    justify-content:flex-start;
+    margin-bottom:20px;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+input, textarea{
+    padding:15px;
+    border:2px solid #d2a679;
+    border-radius:12px;
+    font-size:16px;
+    outline:none;
+    transition:0.3s;
+    font-family:'Poppins', sans-serif;
+}
+
+input:focus,
+textarea:focus{
+    border-color:brown;
+    box-shadow:0 0 8px rgba(139,69,19,0.3);
+}
+
+textarea{
+    resize:none;
+    height:130px;
+}
+
+button{
+    background:linear-gradient(90deg, brown, #8b4513);
+    color:white;
+    border:none;
+    padding:15px;
+    font-size:17px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.3s;
+}
+
+button:hover{
+    background:linear-gradient(90deg, #8b4513, brown);
+    transform:scale(1.03);
+}
+
+/* THANK YOU POPUP */
+.thank-you-message{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.45);
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.thank-you-card{
+    background:white;
+    padding:40px 30px;
+    border-radius:25px;
+    text-align:center;
+    max-width:500px;
+    width:90%;
+    box-shadow:0 15px 35px rgba(0,0,0,0.15);
+    animation:popUp 0.4s ease;
+}
+
+.thank-you-card h3{
+    color:#8b4513;
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.thank-you-card p{
+    color:#666;
+    font-size:17px;
+    margin-bottom:25px;
+    line-height:1.6;
+}
+
+.thank-you-card button{
+    background:linear-gradient(90deg,#8b4513,#d9a066);
+    color:white;
+    border:none;
+    padding:14px 30px;
+    border-radius:14px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.thank-you-card button:hover{
+    transform:scale(1.05);
+}
+
+@keyframes popUp{
+    from{
+        opacity:0;
+        transform:scale(0.8);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* FOOTER */
+footer{
+    background:linear-gradient(90deg, brown, #8b4513);
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:50px;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="navdiv">
+        <div class="logo">
+            <a href="file:///C:/Users/Jhonell/OneDrive/Desktop/Web%20Development/Home.html">
+                🥐 LEJ PASTRY HOUSE
+            </a>
+        </div>
+
+        <ul>
+            <li><a href="file:///C:/Users/Jhonell/OneDrive/Desktop/Web%20Development/Home.html">Home</a></li>
+            <li><a href="file:///C:/Users/Jhonell/OneDrive/Desktop/Web%20Development/About%20Lej.html">About</a></li>
+            <li><a href="file:///C:/Users/Jhonell/OneDrive/Desktop/Web%20Development/Our%20Products.html">Our Products</a></li>
+            <li><a href="file:///C:/Users/Jhonell/OneDrive/Desktop/Web%20Development/Contact%20Us.html">Contact Us</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="contact-page">
+    <div class="contact-box">
+
+        <h2>Contact Us</h2>
+
+        <p>📞 0912-345-6789</p>
+        <p>📍 San Pablo City, Laguna</p>
+        <p>📘 Facebook: LEJ Pastry House</p>
+        <p>📧 lejpastryhouse@gmail.com</p>
+
+        <!-- CUSTOMER SERVICE -->
+        <div class="service-section">
+            <h3>Customer Service</h3>
+
+            <p>
+                Having issues with your order or want to report a problem?
+                Send us a message and our team will respond as soon as possible.
+            </p>
+
+            <form>
+                <input type="text" placeholder="Enter your full name" required>
+
+                <input type="email" placeholder="Enter your email" required>
+
+                <textarea placeholder="Describe your issue or concern..." required></textarea>
+
+              <button type="button" onclick="showThankYou()">Submit Report</button>
+                <div class="thank-you-message" id="thankYouMessage">
+    <div class="thank-you-card">
+        <h3>🎉 Thank You for Your Report!</h3>
+        <p>We appreciate your feedback. Your report has been successfully submitted and our customer service team will review it as soon as possible.</p>
+        <button onclick="closeThankYou()">Close</button>
+    </div>
+</div>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<script>
+function showThankYou(){
+    document.getElementById("thankYouMessage").style.display = "flex";
+}
+
+function closeThankYou(){
+    document.getElementById("thankYouMessage").style.display = "none";
+}
+</script>
+
+<footer>
+    <p>&copy; 2026 LEJ PASTRY HOUSE. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
